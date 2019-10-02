@@ -1,8 +1,8 @@
-// What goes in here?
+
+
 const express = require('express');
 
-// Middlewares?
-// app level middleware libraries
+
 const morgan = require('morgan');
 const cors = require('cors');
 
@@ -13,6 +13,8 @@ app.use(morgan('dev'));
 app.use(express.json());
 
 
+app.use('*', notFound);
+app.use(errorHandler);
 
 module.exports = {
   server: app,
