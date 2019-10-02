@@ -72,4 +72,4 @@ user.methods.can = function (capability) {
   return capabilities[this.role].includes(capability);
 };
 
-module.exports = mongoose.model("User", user);
+module.exports = mongoose.model('User', user);
