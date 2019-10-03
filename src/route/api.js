@@ -14,7 +14,7 @@ router.param('model', modelFinder);
 router.get('/api/v1/:model', handleGetAll);
 router.get('/api/v1/:model/:id', handleGetOne);
 
-router.post('/api/v1/:model/', handlePost);
+router.post('/api/v1/:model/', auth(), handlePost);
 router.put('/api/v1/:model/:id', handlePut);
 router.delete('/api/v1/:model/:id', handleDelete);
 
@@ -52,7 +52,6 @@ function handleDelete(request, response, next) {
   const id = request.params.id;
   request.model.delete(id)
     .then((result) => {
-      console.log(result);
       response.status = 204;
     })
     .catch(next);

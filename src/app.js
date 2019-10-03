@@ -10,14 +10,17 @@ const notFound = require('./middleware/not-found.js');
 
 // - ROUTER
 const authRouter = require('./route/auth.js');
+const apiRouter = require('./route/api.js');
 
 // - MIDDLEWARE
 app.use(cors());
 app.use(morgan('dev'));
 app.use(express.json());
 
-// - OUR MIDDLEWARE
+// - ROUTES
 app.use(authRouter);
+app.use(apiRouter);
+
 app.use('*', notFound);
 app.use(errorHandler);
 
