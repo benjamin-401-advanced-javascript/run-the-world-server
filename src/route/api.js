@@ -1,24 +1,22 @@
 'use strict';
 
 const express = require('express');
-/// Use model-finder middleware to import modles
+/// modelFinder middleware attaches proper model onto request 
 const modelFinder = require('../middleware/model-finder.js');
 const auth = require('../middleware/auth.js');
 
 const router = express.Router();
 
-//define a paramater which which to run our middleware
+// run modelFinder middleware on all routes with /model param
 router.param('model', modelFinder);
 
-// define a consiszent set of routes that can be used for any model in our 
-// Model directory
-
+// routes all models need - CRUD capable
 router.get('/api/v1/:model', handleGetAll);
 router.get('/api/v1/:model/:id', handleGetOne);
 
 router.post('/api/v1/:model/', handlePost);
-router.put('/api/v1/:model/:id', handlePut)
-router.delete('/api/v1/:model/:id', handleDelete)
+router.put('/api/v1/:model/:id', handlePut);
+router.delete('/api/v1/:model/:id', handleDelete);
 
 function handleGetAll(request, response, next) {
   request.model.get()

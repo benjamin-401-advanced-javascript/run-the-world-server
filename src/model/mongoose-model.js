@@ -6,9 +6,9 @@ class DataModel {
   }
 
   get(id) {
-    let query = id ? { _id: id } : {}
+    let query = id ? { _id: id } : {};
     return this.schema.find(query);
-  };
+  }
 
   post(record) {
     let newRecord = new this.schema(record);
