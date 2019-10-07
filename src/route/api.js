@@ -34,6 +34,8 @@ function handleGetOne(request, response, next) {
 }
 
 function handlePost(request, response, next) {
+  console.log(request.body);
+  request.body.userId = 'placeholder User _id'; //request.user._id;
   const data = request.body;
   request.model.post(data)
     .then(results => response.json(results))
@@ -51,9 +53,7 @@ function handlePut(request, response, next) {
 function handleDelete(request, response, next) {
   const id = request.params.id;
   request.model.delete(id)
-    .then((result) => {
-      response.status = 204;
-    })
+    .then(() => response.sendStatus(200))
     .catch(next);
 }
 
