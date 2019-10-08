@@ -11,7 +11,7 @@ const router = express.Router();
 router.param('model', modelFinder);
 
 // routes all models need - CRUD capable
-router.get('/api/v1/:model', handleGetAll);
+router.get('/api/v1/:model', auth(), handleGetAll);
 router.get('/api/v1/:model/:id', handleGetOne);
 
 router.post('/api/v1/:model/', handlePost);
